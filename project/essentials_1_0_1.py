@@ -17,11 +17,11 @@ def calculate_base_price(age):
     """
     # TODO: Fix the indentation errors below
     if age < 13:
-    return 8
+        return 8
     elif age >= 65:
-    return 10
+        return 10
     else:
-    return 12
+        return 12
 
 
 def is_premium_day(day):
@@ -36,9 +36,9 @@ def is_premium_day(day):
     """
     # TODO: Fix the indentation errors below
     if day == "Friday" or day == "Saturday":
-    return True
+        return True
     else:
-    return False
+        return False
 
 
 def calculate_total_price(age, day):
@@ -55,9 +55,9 @@ def calculate_total_price(age, day):
     # TODO: Fix the indentation errors below
     base_price = calculate_base_price(age)
     if is_premium_day(day):
-    return base_price + 3
+        return base_price + 3
     else:
-    return base_price
+        return base_price
 
 
 def get_ticket_category(age):
@@ -72,5 +72,10 @@ def get_ticket_category(age):
     """
     # TODO: Complete this function with correct indentation
     # Return "Child" if age < 13, "Senior" if age >= 65, "Adult" otherwise
-    pass
+    if age < 13:
+        return "Child"
+    else if age >= 65:
+        return "Senior"
+    else:
+        return "Adult"
 
