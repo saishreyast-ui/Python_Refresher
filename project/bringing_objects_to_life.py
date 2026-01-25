@@ -192,7 +192,7 @@ def create_deluxe_coffee_with_chaining(size, coffee_type, syrup1, syrup2, milk):
     Hint: Chain methods: coffee.add_syrup(syrup1).add_syrup(syrup2).add_milk(milk).add_whipped_cream()
     """
     # TODO: Create coffee and chain customization methods
-    return Coffee(size, coffee_type).add_syrup(syrup1).add_syrup(syrup2).add_milk(milk)
+    return Coffee(size, coffee_type).add_syrup(syrup1).add_syrup(syrup2).add_milk(milk).add_whipped_cream()
 
 
 def compare_two_orders(coffee1, coffee2):
