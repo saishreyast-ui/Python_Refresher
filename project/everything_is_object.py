@@ -83,10 +83,9 @@ def are_same_account(account1, account2):
         True if same account object, False otherwise
     """
     # TODO: Use id() to check if both references point to same object
-    if id(account1) is id(account2):
+    if id(account1) == id(account2):
         return True
-    else:
-        return False
+    return False
 
 
 def setup_joint_account(initial_balance):
@@ -211,4 +210,3 @@ def get_account_info(account):
     """
     # TODO: Return id(), type(), and balance of account
     return (id(account), type(account), account[0])
-
