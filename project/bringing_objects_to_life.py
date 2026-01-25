@@ -106,13 +106,13 @@ class Coffee:
         
         Hint: Build a string like "Large Latte with vanilla syrup, oat milk, whipped cream"
         """
-        # TODO: Build and return description string
+        # TODO: Build and return description strings
         str1 = f"{self.size} {self.coffee_type} with "
         for i in range(len(self.syrups)):
             str1 += self.syrups[i]
-            str += ", "
+            str1 += ", "
         str1 += f"{self.milk_type} type"
-        str1 += ", whipped cream" if self.has_whipped_cream else " "
+        str1 += (", whipped cream" if self.has_whipped_cream else " ")
         return str1
 
     
