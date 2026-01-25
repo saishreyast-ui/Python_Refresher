@@ -74,7 +74,7 @@ def get_ticket_category(age):
     # Return "Child" if age < 13, "Senior" if age >= 65, "Adult" otherwise
     if age < 13:
         return "Child"
-    else if age >= 65:
+    elif age >= 65:
         return "Senior"
     else:
         return "Adult"
