@@ -29,13 +29,12 @@ class Coffee:
               Set base price based on size.
         """
         # TODO: Initialize instance variables
-        # self.size = size
-        # self.coffee_type = coffee_type
-        # self.syrups = []  # List to store added syrups
-        # self.milk_type = None  # No milk by default
-        # self.has_whipped_cream = False
-        # self.base_price = 3.0 if size == "small" else (4.0 if size == "medium" else 5.0)
-        pass
+        self.size = size
+        self.coffee_type = coffee_type
+        self.syrups = []  # List to store added syrups
+        self.milk_type = None  # No milk by default
+        self.has_whipped_cream = False
+        self.base_price = 3.0 if size == "small" else (4.0 if size == "medium" else 5.0)
     
     def add_syrup(self, syrup_flavor):
         """
@@ -51,7 +50,8 @@ class Coffee:
         Hint: Append syrup_flavor to self.syrups list, then return self
         """
         # TODO: Add syrup to the syrups list and return self
-        pass
+        self.syrups.append(syrup_flavor)
+        return self
     
     def add_milk(self, milk_type):
         """
@@ -67,7 +67,8 @@ class Coffee:
         Hint: Set self.milk_type to the milk_type, then return self
         """
         # TODO: Set milk type and return self
-        pass
+        self.milk_type = milk_type
+        return self
     
     def add_whipped_cream(self):
         """
@@ -80,7 +81,8 @@ class Coffee:
         Hint: Set self.has_whipped_cream to True, then return self
         """
         # TODO: Add whipped cream and return self
-        pass
+        self.has_whipped_cream = True
+        return self
     
     def get_price(self):
         """
@@ -93,7 +95,7 @@ class Coffee:
               $0.75 if whipped cream added
         """
         # TODO: Calculate and return total price
-        pass
+        return self.base_price + len(self.syrups)*0.50 + (self.milk_type!=None)*0.50 + (self.has_whipped_cream)*0.75
     
     def get_description(self):
         """
@@ -105,7 +107,14 @@ class Coffee:
         Hint: Build a string like "Large Latte with vanilla syrup, oat milk, whipped cream"
         """
         # TODO: Build and return description string
-        pass
+        str1 = f"{self.size} {self.coffee_type} with "
+        for i in range(len(self.syrups)):
+            str1 += self.syrups[i]
+            str += ", "
+        str1 += f"{self.milk_type} type"
+        str1 += ", whipped cream" if self.has_whipped_cream else " "
+        return str1
+
     
     def get_size(self):
         """
@@ -115,7 +124,7 @@ class Coffee:
             Size string
         """
         # TODO: Return the size
-        pass
+        return self.size
     
     def get_type(self):
         """
@@ -125,7 +134,7 @@ class Coffee:
             Coffee type string
         """
         # TODO: Return the coffee type
-        pass
+        return self.coffee_type
 
 
 def create_simple_coffee(size, coffee_type):
@@ -143,7 +152,7 @@ def create_simple_coffee(size, coffee_type):
     Hint: Call Coffee class like a function: Coffee(size, coffee_type)
     """
     # TODO: Create and return a Coffee object
-    pass
+    return Coffee(size, coffee_type)
 
 
 def create_customized_coffee(size, coffee_type, syrup, milk):
@@ -162,7 +171,7 @@ def create_customized_coffee(size, coffee_type, syrup, milk):
     Hint: Create Coffee object, then call add_syrup() and add_milk() on it
     """
     # TODO: Create coffee and add customizations
-    pass
+    return Coffee(size, coffee_type).add_syrup(syrup).add_milk(milk)
 
 
 def create_deluxe_coffee_with_chaining(size, coffee_type, syrup1, syrup2, milk):
@@ -183,7 +192,7 @@ def create_deluxe_coffee_with_chaining(size, coffee_type, syrup1, syrup2, milk):
     Hint: Chain methods: coffee.add_syrup(syrup1).add_syrup(syrup2).add_milk(milk).add_whipped_cream()
     """
     # TODO: Create coffee and chain customization methods
-    pass
+    return Coffee(size, coffee_type).add_syrup(syrup1).add_syrup(syrup2).add_milk(milk)
 
 
 def compare_two_orders(coffee1, coffee2):
@@ -201,5 +210,8 @@ def compare_two_orders(coffee1, coffee2):
     Hint: Use get_price() accessor method on both objects to compare
     """
     # TODO: Get prices and compare them
-    pass
+    price1 = get_price(coffee1)
+    price2 = get_price(coffee2)
+    more_expensive = (1 if price1 > price2 else 0)
+    return (price1, price2, more_expensive)
 
