@@ -210,8 +210,8 @@ def compare_two_orders(coffee1, coffee2):
     Hint: Use get_price() accessor method on both objects to compare
     """
     # TODO: Get prices and compare them
-    price1 = coffee1.get_price(coffee1)
-    price2 = coffee2.get_price(coffee2)
+    price1 = coffee1.get_price()
+    price2 = coffee2.get_price()
     if(price1 > price2): more_expensive = 1
     elif(price1 < price2): more_expensive = 2
     else: more_expensive = 0
