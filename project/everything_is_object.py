@@ -136,7 +136,10 @@ def close_and_open_new_account(old_account, new_balance):
     """
     # TODO: Get old account id, create new account, get new id, verify different
     new_account = create_account(old_account[0])
-    return (id(old_account), id(new_account), !(are_same_account(old_account, new_account)))
+    old_id = id(old_account)
+    new_id = id(new_account)
+    are_different = (old_id is not new_id)
+    return (old_id, new_id, are_different)
 
 
 def get_account_type(account):
