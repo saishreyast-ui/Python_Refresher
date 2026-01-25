@@ -83,7 +83,7 @@ def are_same_account(account1, account2):
         True if same account object, False otherwise
     """
     # TODO: Use id() to check if both references point to same object
-    return (id(account1)==id(account2)? True:False)
+    return (id(account1) is id(account2)? True:False)
 
 
 def setup_joint_account(initial_balance):
@@ -132,8 +132,8 @@ def close_and_open_new_account(old_account, new_balance):
         Tuple (old_id, new_id, are_different) where are_different is True
     """
     # TODO: Get old account id, create new account, get new id, verify different
-    new_account = [old_account[0]]
-    return (id(old_account), id(new_account), !are_same_account(old_account, new_account))
+    new_account = create_account(old_account[0])
+    return (id(old_account), id(new_account), !(are_same_account(old_account, new_account)))
 
 
 def get_account_type(account):
