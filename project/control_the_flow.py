@@ -420,7 +420,7 @@ def sum_until_negative(numbers):
     """
     sum = 0
     i = 0
-    while i<len(numbers)
+    while i<len(numbers):
         while numbers[i]>=0:
             sum += numbers[i]
             i += 1
