@@ -419,11 +419,8 @@ def sum_until_negative(numbers):
         Sum of numbers before the first negative (or sum of all if no negatives)
     """
     sum = 0
-    i = 0
-    while i<len(numbers):
-        while numbers[i]>=0:
-            sum += numbers[i]
-            i += 1
+    for i in range(len(numbers)):
+        if numbers[i]>=0: sum += numbers[i]
     return sum
 
 
