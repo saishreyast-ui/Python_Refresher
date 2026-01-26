@@ -24,7 +24,7 @@ def negate(value):
     Returns:
         True if value is falsy, False if value is truthy
     """
-    pass
+    return (not value)
 
 
 def both_true(a, b):
@@ -38,7 +38,7 @@ def both_true(a, b):
     Returns:
         True if both a and b are truthy, False otherwise
     """
-    pass
+    return (a and b)
 
 
 def either_true(a, b):
@@ -52,7 +52,7 @@ def either_true(a, b):
     Returns:
         True if a or b (or both) are truthy, False otherwise
     """
-    pass
+    return (a or b)
 
 
 def is_empty(container):
@@ -65,7 +65,7 @@ def is_empty(container):
     Returns:
         True if empty, False if it has elements
     """
-    pass
+    return (not container)
 
 
 def first_truthy(a, b, default):
@@ -81,7 +81,12 @@ def first_truthy(a, b, default):
     Returns:
         First truthy value, or default
     """
-    pass
+    if a:
+        return a
+    elif b:
+        return b
+    else:
+        return default
 
 
 # =============================================================================
@@ -99,7 +104,7 @@ def are_same_object(a, b):
     Returns:
         True if same object (same id), False otherwise
     """
-    pass
+    return id(a)==id(b)
 
 
 def are_different_objects(a, b):
@@ -113,7 +118,7 @@ def are_different_objects(a, b):
     Returns:
         True if different objects, False if same object
     """
-    pass
+    return (id(a) is not id(b))
 
 
 def are_equal(a, b):
@@ -127,7 +132,7 @@ def are_equal(a, b):
     Returns:
         True if values are equal, False otherwise
     """
-    pass
+    return a==b
 
 
 def are_not_equal(a, b):
@@ -141,7 +146,7 @@ def are_not_equal(a, b):
     Returns:
         True if values are different, False otherwise
     """
-    pass
+    return a != b
 
 
 # =============================================================================
@@ -159,7 +164,9 @@ def compare_values(a, b):
     Returns:
         "less" if a < b, "equal" if a == b, "greater" if a > b
     """
-    pass
+    if a < b: return "less"
+    elif a==b: return "equal"
+    else: return "greater"
 
 
 def is_in_range(value, low, high):
@@ -175,8 +182,8 @@ def is_in_range(value, low, high):
     Returns:
         True if low <= value <= high, False otherwise
     """
-    pass
-
+    if low <= value and value <= high: return True
+    return False
 
 def find_max_of_three(a, b, c):
     """
@@ -190,7 +197,7 @@ def find_max_of_three(a, b, c):
     Returns:
         The largest value
     """
-    pass
+    return (a if a>(b if b>c else c) else (b if b>c else c))
 
 
 def clamp(value, minimum, maximum):
@@ -205,7 +212,9 @@ def clamp(value, minimum, maximum):
     Returns:
         value if in range, minimum if too low, maximum if too high
     """
-    pass
+    if minimum <= value and value <= maximum: return value
+    elif value <= minimum: return minimum
+    else: return maximum
 
 
 # =============================================================================
@@ -223,7 +232,7 @@ def integer_divide(a, b):
     Returns:
         Floor of a divided by b
     """
-    pass
+    return a//b
 
 
 def get_remainder(a, b):
@@ -237,7 +246,7 @@ def get_remainder(a, b):
     Returns:
         Remainder of a divided by b
     """
-    pass
+    return a%b
 
 
 def divmod_result(a, b):
@@ -251,7 +260,7 @@ def divmod_result(a, b):
     Returns:
         Tuple (quotient, remainder) using integer division
     """
-    pass
+    return (a//b, a%b)
 
 
 def is_divisible(a, b):
@@ -265,7 +274,7 @@ def is_divisible(a, b):
     Returns:
         True if a is divisible by b, False otherwise
     """
-    pass
+    return a%b==0
 
 
 # =============================================================================
@@ -282,7 +291,10 @@ def classify_number(n):
     Returns:
         "positive", "negative", or "zero"
     """
-    pass
+    if n > 0: return "positive"
+    if n ==0: return "zero"
+    return "negative"
+
 
 
 def get_number_type(n):
@@ -295,7 +307,7 @@ def get_number_type(n):
     Returns:
         "even" or "odd"
     """
-    pass
+    return ("even" if n%2==0 else "odd")
 
 
 def assign_grade(score):
@@ -315,7 +327,12 @@ def assign_grade(score):
     Returns:
         Letter grade as string
     """
-    pass
+    if score < 60: return "F"
+    elif score<70: return "D"
+    elif score<80: return "C"
+    elif score<90: return "B"
+    return "A"
+
 
 
 # =============================================================================
@@ -332,7 +349,7 @@ def sum_of_range(n):
     Returns:
         Sum of 1 + 2 + 3 + ... + n
     """
-    pass
+    return n*(n+1)/2
 
 
 def count_vowels(text):
@@ -346,7 +363,10 @@ def count_vowels(text):
     Returns:
         Count of vowels
     """
-    pass
+    count = 0
+    for e in text.lower():
+        if e in ['a','e','i','o','u']: count+=1
+    return count
 
 
 def find_factors(n):
@@ -359,7 +379,10 @@ def find_factors(n):
     Returns:
         List of factors in ascending order
     """
-    pass
+    L = []
+    for i in range(1, n/2 +1):
+        if n%i==0: L += [i]
+    return L
 
 
 # =============================================================================
@@ -376,7 +399,11 @@ def countdown(start):
     Returns:
         List like [start, start-1, ..., 2, 1]
     """
-    pass
+    L = []
+    while start:
+        L += [start]
+        start -= 1
+    return L
 
 
 def sum_until_negative(numbers):
@@ -390,7 +417,12 @@ def sum_until_negative(numbers):
     Returns:
         Sum of numbers before the first negative (or sum of all if no negatives)
     """
-    pass
+    sum = 0
+    i = 0
+    while numbers[i]>=0:
+        sum += i
+        i += 1
+    return sum
 
 
 def find_first_multiple(n, minimum):
@@ -404,7 +436,7 @@ def find_first_multiple(n, minimum):
     Returns:
         Smallest multiple of n that is >= minimum
     """
-    pass
+    return ((minimum//n + 1) * n)
 
 
 # =============================================================================
@@ -421,7 +453,10 @@ def find_first_negative(numbers):
     Returns:
         First negative number, or None if no negatives exist
     """
-    pass
+    for x in numbers:
+        if x < 0:
+            return x
+    return None
 
 
 def sum_positive_only(numbers):
@@ -434,7 +469,11 @@ def sum_positive_only(numbers):
     Returns:
         Sum of positive numbers only
     """
-    pass
+    total = 0
+    for x in numbers:
+        if x <= 0: continue
+        total += x
+    return total
 
 
 def is_prime(n):
@@ -448,7 +487,12 @@ def is_prime(n):
     Returns:
         True if prime, False otherwise
     """
-    pass
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
 
 def find_index_of(items, target):
@@ -462,7 +506,10 @@ def find_index_of(items, target):
     Returns:
         Index of target, or -1 if not found
     """
-    pass
+    for i, x in enumerate(items):
+        if x == target:
+            return i
+    return -1
 
 
 # =============================================================================
@@ -479,7 +526,7 @@ def squares_up_to(n):
     Returns:
         List [1, 4, 9, 16, ..., n*n]
     """
-    pass
+    return [i*i for i in range(1, n+1)]
 
 
 def filter_even(numbers):
@@ -492,7 +539,7 @@ def filter_even(numbers):
     Returns:
         List containing only even numbers (in original order)
     """
-    pass
+    return [x for x in numbers if x % 2 == 0]
 
 
 def get_word_lengths(words):
@@ -505,7 +552,7 @@ def get_word_lengths(words):
     Returns:
         List of lengths corresponding to each word
     """
-    pass
+    return [len(w) for w in words]
 
 
 def filter_long_words(words, min_length):
@@ -519,7 +566,7 @@ def filter_long_words(words, min_length):
     Returns:
         List of words with length >= min_length
     """
-    pass
+    return [w for w in words if len(w) >= min_length]
 
 
 # =============================================================================
@@ -536,7 +583,7 @@ def unique_digits(number):
     Returns:
         Set of unique digits (as integers)
     """
-    pass
+    return {int(d) for d in str(number)}
 
 
 def unique_first_letters(words):
@@ -549,7 +596,7 @@ def unique_first_letters(words):
     Returns:
         Set of unique first characters (lowercase)
     """
-    pass
+    return {w[0].lower() for w in words}
 
 
 # =============================================================================
@@ -566,7 +613,7 @@ def number_to_square_map(n):
     Returns:
         Dict like {1: 1, 2: 4, 3: 9, ...}
     """
-    pass
+    return {i: i*i for i in range(1, n+1)}
 
 
 def word_to_length_map(words):
@@ -579,7 +626,7 @@ def word_to_length_map(words):
     Returns:
         Dict like {"hello": 5, "world": 5, ...}
     """
-    pass
+    return {w: len(w) for w in words}
 
 
 def char_frequency(text):
@@ -592,4 +639,4 @@ def char_frequency(text):
     Returns:
         Dict mapping each character to its count
     """
-    pass
+    return {c: text.count(c) for c in set(text)}
