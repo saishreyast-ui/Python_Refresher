@@ -67,10 +67,7 @@ def parse_stage_number(stage_str, base=10):
         Stage number as integer
     """
     # TODO: Convert the string to an integer using the specified base
-    sum = 0
-    for i in range(1, len(stage_str)+1):
-        sum += (base**i) * float(stage_str[-i])
-    return sum
+    return int(stage_str, base)
 
 
 # =============================================================================
