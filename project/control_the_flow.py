@@ -104,7 +104,7 @@ def are_same_object(a, b):
     Returns:
         True if same object (same id), False otherwise
     """
-    return (id(a) is id(b))
+    return (id(a) == id(b))
 
 
 def are_different_objects(a, b):
@@ -118,7 +118,7 @@ def are_different_objects(a, b):
     Returns:
         True if different objects, False if same object
     """
-    return (id(a) is not id(b))
+    return (id(a) != id(b))
 
 
 def are_equal(a, b):
@@ -382,6 +382,7 @@ def find_factors(n):
     L = []
     for i in range(1, n//2 +1):
         if n%i==0: L += [i]
+    L += [n]
     return L
 
 
@@ -419,7 +420,7 @@ def sum_until_negative(numbers):
     """
     sum = 0
     i = 0
-    while numbers[i]>=0:
+    while numbers[i]>=0 or i<len(numbers):
         sum += numbers[i]
         i += 1
     return sum
@@ -436,7 +437,7 @@ def find_first_multiple(n, minimum):
     Returns:
         Smallest multiple of n that is >= minimum
     """
-    return ((minimum//n) * n)
+    return ((minimum//n + 1) * n)
 
 
 # =============================================================================
