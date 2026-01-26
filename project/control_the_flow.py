@@ -420,9 +420,10 @@ def sum_until_negative(numbers):
     """
     sum = 0
     i = 0
-    while numbers[i]>=0 and i<len(numbers):
-        sum += numbers[i]
-        i += 1
+    while i<len(numbers)
+        while numbers[i]>=0:
+            sum += numbers[i]
+            i += 1
     return sum
 
 
@@ -437,7 +438,7 @@ def find_first_multiple(n, minimum):
     Returns:
         Smallest multiple of n that is >= minimum
     """
-    if minimum%n==0: return n
+    if minimum%n==0: return minimum
     return ((minimum//n + 1) * n)
 
 
