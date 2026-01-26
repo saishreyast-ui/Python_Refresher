@@ -69,7 +69,7 @@ def parse_stage_number(stage_str, base=10):
     # TODO: Convert the string to an integer using the specified base
     sum = 0
     for i in range(len(stage_str)):
-        sum += (base**(len(stage_str)-i+1)) * stage_str[i]
+        sum += (base**(len(stage_str)-i+1)) * int(stage_str[i])
     return sum
 
 
@@ -134,6 +134,7 @@ def get_closing_acts(schedule, count):
     L = []
     for i in range(1, count+1):
         L += [schedule[-1*i]]
+    L.reverse()
     return L
 
 
@@ -306,7 +307,7 @@ def is_registered(registry, name):
         True if artist is in registry, False otherwise
     """
     # TODO: Check if name is a key in the registry
-    for key in registry.keys:
+    for key in registry.keys():
         if key is name: return True
     return False
 
