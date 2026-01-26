@@ -24,7 +24,7 @@ def create_event_info(name, date, venue):
         Tuple containing (name, date, venue)
     """
     # TODO: Create and return a tuple with the event details
-    pass
+    return (name, date, venue)
 
 
 def is_lineup_ready(performers):
@@ -38,7 +38,7 @@ def is_lineup_ready(performers):
         True if there are performers, False if empty
     """
     # TODO: Use truthiness to check if performers list is non-empty
-    pass
+    return len(performers)>0
 
 
 def parse_ticket_price(price_str):
@@ -52,7 +52,7 @@ def parse_ticket_price(price_str):
         Price as a float
     """
     # TODO: Convert the string to a float
-    pass
+    return float(price_str)
 
 
 def parse_stage_number(stage_str, base=10):
@@ -67,7 +67,10 @@ def parse_stage_number(stage_str, base=10):
         Stage number as integer
     """
     # TODO: Convert the string to an integer using the specified base
-    pass
+    sum = 0
+    for i in range(len(stage_str)):
+        sum += base ** (stage_str[i])
+    return sum
 
 
 # =============================================================================
@@ -82,7 +85,7 @@ def create_schedule():
         Empty list to hold performers
     """
     # TODO: Return an empty list
-    pass
+    return []
 
 
 def add_to_schedule(schedule, performer):
@@ -94,7 +97,8 @@ def add_to_schedule(schedule, performer):
         performer: Name of performer to add
     """
     # TODO: Add performer to the schedule list
-    pass
+    schedule += [performer]
+    return None
 
 
 def get_headliners(schedule, count):
@@ -109,7 +113,10 @@ def get_headliners(schedule, count):
         List of first N performers
     """
     # TODO: Use slicing to get the first count performers
-    pass
+    L = []
+    for i in range(count):
+        L += [schedule[i]]
+    return L
 
 
 def get_closing_acts(schedule, count):
@@ -124,7 +131,10 @@ def get_closing_acts(schedule, count):
         List of last N performers
     """
     # TODO: Use negative slicing to get the last count performers
-    pass
+    L = []
+    for i in range(1, count+1):
+        L += [schedule[-1*i]]
+    return L
 
 
 def is_performing(schedule, artist):
@@ -139,7 +149,9 @@ def is_performing(schedule, artist):
         True if artist is in schedule, False otherwise
     """
     # TODO: Check membership using the in operator
-    pass
+    for e in schedule:
+        if e==artist: return True
+    return False
 
 
 # =============================================================================
