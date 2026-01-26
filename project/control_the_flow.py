@@ -420,9 +420,8 @@ def sum_until_negative(numbers):
     """
     sum = 0
     for i in range(len(numbers)):
-        if numbers[i]>=0:
-            sum += numbers[i]
-            break;
+        if numbers[i]<0: break;
+        sum += numbers[i]
     return sum
 
 
