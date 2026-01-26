@@ -38,7 +38,7 @@ def both_true(a, b):
     Returns:
         True if both a and b are truthy, False otherwise
     """
-    return (a and b)
+    return bool(a and b)
 
 
 def either_true(a, b):
@@ -52,7 +52,7 @@ def either_true(a, b):
     Returns:
         True if a or b (or both) are truthy, False otherwise
     """
-    return (a or b)
+    return bool(a or b)
 
 
 def is_empty(container):
@@ -104,7 +104,7 @@ def are_same_object(a, b):
     Returns:
         True if same object (same id), False otherwise
     """
-    return id(a)==id(b)
+    return (id(a) is id(b))
 
 
 def are_different_objects(a, b):
@@ -380,7 +380,7 @@ def find_factors(n):
         List of factors in ascending order
     """
     L = []
-    for i in range(1, n/2 +1):
+    for i in range(1, n//2 +1):
         if n%i==0: L += [i]
     return L
 
@@ -420,7 +420,7 @@ def sum_until_negative(numbers):
     sum = 0
     i = 0
     while numbers[i]>=0:
-        sum += i
+        sum += numbers[i]
         i += 1
     return sum
 
@@ -436,7 +436,7 @@ def find_first_multiple(n, minimum):
     Returns:
         Smallest multiple of n that is >= minimum
     """
-    return ((minimum//n + 1) * n)
+    return ((minimum//n) * n)
 
 
 # =============================================================================
