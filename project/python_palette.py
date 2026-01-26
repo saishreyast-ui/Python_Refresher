@@ -366,7 +366,7 @@ def extend_with_concat(lineup, new_artists):
     """
     # TODO: Use + to concatenate and return the result
     lineup = lineup + new_artists
-    return lineup + new_artists
+    return lineup
 
 
 def extend_with_plus_equals(lineup, new_artists):
