@@ -229,8 +229,9 @@ def remove_negatives_inplace(numbers):
     Returns:
         None (modification is in-place)
     """
-    numbers = [n for n in numbers if n >= 0]
-    return numbers
+    for i in range(len(numbers) - 1, -1, -1):
+        if numbers[i] < 0:
+            del numbers[i]
 
 
 def remove_negatives_safe(numbers):
