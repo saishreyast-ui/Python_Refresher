@@ -51,7 +51,7 @@ def get_average(numbers):
         Average as a float, or None if collection is empty
     """
     if len(numbers): return get_sum(numbers)/get_length(numbers)
-    return 0
+    return None
 
 
 def get_extremes(numbers):
@@ -97,7 +97,7 @@ def repeat_items(items, times=2):
     Returns:
         New list with items repeated
     """
-    copy = []
+    copy = items[:]
     for i in range(times):
         copy += items
     return items
@@ -231,8 +231,7 @@ def remove_negatives_inplace(numbers):
     Returns:
         None (modification is in-place)
     """
-    n = len(numbers)
-    for i in range(n):
+    for i in range(len(numbers)):
         if numbers[i]: del numbers[i]
     return numbers
 
@@ -249,8 +248,7 @@ def remove_negatives_safe(numbers):
         New list containing only non-negative numbers
     """
     copy = numbers[:]
-    n = len(copy)
-    for i in range(n):
+    for i in range(len(copy)):
         if copy[i]: del copy[i]
     return numbers
 
@@ -304,6 +302,7 @@ def reduce_items(items, func, initial):
     acc = initial
     for x in items:
         ans = func(acc, x)
+        acc = x
     return ans
 
 
@@ -372,7 +371,7 @@ def check_any_negative(numbers):
         True if at least one is negative, False otherwise
     """
     for x in numbers:
-        if x>0: return True
+        if x<0: return True
     return False
 
 
@@ -418,5 +417,5 @@ def count_occurrences(items, target):
     """
     count = 0
     for x in items:
-        if x is target: count += 1
+        if x==target: count += 1
     return count
