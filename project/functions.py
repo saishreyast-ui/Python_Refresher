@@ -229,9 +229,14 @@ def remove_negatives_inplace(numbers):
     Returns:
         None (modification is in-place)
     """
-    copy = numbers[:]
-    for i in range(len(copy)):
-        if copy[i]<0: del numbers[i]
+    i = 0
+    while True:
+        if i<len(numbers)-1:
+            if numbers[i]<0:
+                del numbers[i]
+                break
+        if i>len(numbers)-1: break
+        i += 1
     return None
 
 
@@ -247,8 +252,14 @@ def remove_negatives_safe(numbers):
         New list containing only non-negative numbers
     """
     copy = numbers[:]
-    for i in range(len(numbers)):
-        if numbers[i]<0: del copy[i]
+    i = 0
+    while True:
+        if i<len(copy)-1:
+            if copy[i]<0:
+                del copy[i]
+                break
+        if i>len(copy)-1: break
+        i += 1
     return copy
 
 
