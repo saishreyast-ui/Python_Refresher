@@ -21,7 +21,7 @@ def get_length(items):
     Returns:
         Integer count of items
     """
-    pass
+    return len(items)
 
 
 def get_sum(numbers):
@@ -34,7 +34,10 @@ def get_sum(numbers):
     Returns:
         Sum of all numbers
     """
-    pass
+    sum = 0
+    for e in numbers:
+        sum += e
+    return sum
 
 
 def get_average(numbers):
@@ -47,7 +50,7 @@ def get_average(numbers):
     Returns:
         Average as a float, or None if collection is empty
     """
-    pass
+    return get_sum(numbers)/get_length(numbers)
 
 
 def get_extremes(numbers):
@@ -60,7 +63,7 @@ def get_extremes(numbers):
     Returns:
         Tuple (minimum, maximum)
     """
-    pass
+    return (min(numbers), max(numbers))
 
 
 # =============================================================================
@@ -79,7 +82,7 @@ def slice_items(items, start=0, end=None):
     Returns:
         Sliced portion of items as a list
     """
-    pass
+    return items[start:end]
 
 
 def repeat_items(items, times=2):
@@ -93,7 +96,7 @@ def repeat_items(items, times=2):
     Returns:
         New list with items repeated
     """
-    pass
+    return items+items
 
 
 def pad_list(items, target_length, pad_value=0):
@@ -108,7 +111,10 @@ def pad_list(items, target_length, pad_value=0):
     Returns:
         New list padded to target_length (or original if already long enough)
     """
-    pass
+    items1 = items[:]
+    for i in range(target_length-len(items)):
+        items1 += [0]
+    return items1
 
 
 # =============================================================================
@@ -129,7 +135,13 @@ def create_record(name, value, category="default", active=True, priority=1):
     Returns:
         Dictionary with all attributes
     """
-    pass
+    return {
+        "name": name,
+        "value": value,
+        "category": category,
+        "active": active,
+        "priority": priority
+    }
 
 
 def format_number(number, decimals=2, prefix="", suffix="", use_thousands=False):
@@ -146,7 +158,12 @@ def format_number(number, decimals=2, prefix="", suffix="", use_thousands=False)
     Returns:
         Formatted string
     """
-    pass
+    if use_thousands:
+        num_str = f"{number:,.{decimals}f}"
+    else:
+        num_str = f"{number:.{decimals}f}"
+
+    return f"{prefix}{num_str}{suffix}"
 
 
 def sort_records(records, key="name", reverse=False):
@@ -161,7 +178,8 @@ def sort_records(records, key="name", reverse=False):
     Returns:
         New sorted list
     """
-    pass
+    records.sort(key=key)
+    return records
 
 
 # =============================================================================
@@ -180,8 +198,8 @@ def append_item(items, value):
     Returns:
         None (modification is in-place)
     """
-    pass
-
+    items.append(value)
+    return None
 
 def append_item_safe(items, value):
     """
@@ -195,7 +213,9 @@ def append_item_safe(items, value):
     Returns:
         New list with value appended
     """
-    pass
+    copy = items[:]
+    copy.append(value)
+    return copy
 
 
 def remove_negatives_inplace(numbers):
@@ -208,7 +228,10 @@ def remove_negatives_inplace(numbers):
     Returns:
         None (modification is in-place)
     """
-    pass
+    n = len(numbers)
+    for i in range(n):
+        if numbers[i]: del numbers[i]
+    return numbers
 
 
 def remove_negatives_safe(numbers):
@@ -222,7 +245,11 @@ def remove_negatives_safe(numbers):
     Returns:
         New list containing only non-negative numbers
     """
-    pass
+    copy = numbers[:]
+    n = len(copy)
+    for i in range(n):
+        if copy[i]: del copy[i]
+    return numbers
 
 
 # =============================================================================
@@ -240,7 +267,8 @@ def apply_to_all(items, func):
     Returns:
         New list with function applied to each item
     """
-    pass
+    new = [func(x) for x in items]
+    return new
 
 
 def filter_items(items, predicate):
@@ -254,7 +282,8 @@ def filter_items(items, predicate):
     Returns:
         New list containing only items where predicate returns True
     """
-    pass
+    new = [x for x in items if predicate(x)]
+    return new
 
 
 def reduce_items(items, func, initial):
@@ -269,7 +298,10 @@ def reduce_items(items, func, initial):
     Returns:
         Final accumulated value
     """
-    pass
+    acc = initial
+    for x in items:
+        ans = func(acc, x)
+    return ans
 
 
 def find_first(items, predicate):
@@ -283,7 +315,9 @@ def find_first(items, predicate):
     Returns:
         First item where predicate returns True, or None if not found
     """
-    pass
+    for x in items:
+        if predicate(x): return x
+    return None
 
 
 def compose(func1, func2):
@@ -298,7 +332,9 @@ def compose(func1, func2):
     Returns:
         New function that is the composition of func1 and func2
     """
-    pass
+    def composed(x):
+        return func1(func2(x))
+    return composed
 
 
 # =============================================================================
@@ -315,7 +351,11 @@ def check_all_positive(numbers):
     Returns:
         True if all are positive, False otherwise
     """
-    pass
+    count = 0
+    for x in numbers:
+        if not x>0: return False
+    return True
+    
 
 
 def check_any_negative(numbers):
@@ -328,7 +368,9 @@ def check_any_negative(numbers):
     Returns:
         True if at least one is negative, False otherwise
     """
-    pass
+    for x in numbers:
+        if x>0: return True
+    return False
 
 
 def get_sorted_copy(items, reverse=False):
@@ -342,7 +384,7 @@ def get_sorted_copy(items, reverse=False):
     Returns:
         New sorted list
     """
-    pass
+    return sorted(items, reverse=reverse)
 
 
 def get_reversed_copy(items):
@@ -355,7 +397,9 @@ def get_reversed_copy(items):
     Returns:
         New list with items in reverse order
     """
-    pass
+    copy = items[:]
+    copy.reverse()
+    return copy
 
 
 def count_occurrences(items, target):
@@ -369,4 +413,7 @@ def count_occurrences(items, target):
     Returns:
         Number of occurrences
     """
-    pass
+    count = 0
+    for x in items:
+        if x is target: count += 1
+    return count
