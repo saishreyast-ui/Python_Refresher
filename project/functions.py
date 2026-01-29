@@ -231,7 +231,7 @@ def remove_negatives_inplace(numbers):
     """
     for i in range(len(numbers)):
         if numbers[i]: del numbers[i]
-    return numbers
+    return None
 
 
 def remove_negatives_safe(numbers):
@@ -299,9 +299,8 @@ def reduce_items(items, func, initial):
     """
     acc = initial
     for x in items:
-        ans = func(acc, x)
-        acc = x
-    return ans
+        acc = func(acc, x)
+    return acc
 
 
 def find_first(items, predicate):
