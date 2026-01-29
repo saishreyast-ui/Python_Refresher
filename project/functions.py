@@ -50,7 +50,8 @@ def get_average(numbers):
     Returns:
         Average as a float, or None if collection is empty
     """
-    return get_sum(numbers)/get_length(numbers)
+    if len(numbers): return get_sum(numbers)/get_length(numbers)
+    return 0
 
 
 def get_extremes(numbers):
@@ -96,7 +97,10 @@ def repeat_items(items, times=2):
     Returns:
         New list with items repeated
     """
-    return items+items
+    copy = []
+    for i in range(times):
+        copy += items
+    return items
 
 
 def pad_list(items, target_length, pad_value=0):
@@ -113,7 +117,7 @@ def pad_list(items, target_length, pad_value=0):
     """
     items1 = items[:]
     for i in range(target_length-len(items)):
-        items1 += [0]
+        items1 += [pad_value]
     return items1
 
 
@@ -178,8 +182,7 @@ def sort_records(records, key="name", reverse=False):
     Returns:
         New sorted list
     """
-    records.sort(key=key)
-    return records
+    return sorted(records, key=lambda r: r.get(key), reverse=reverse)
 
 
 # =============================================================================
