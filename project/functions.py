@@ -97,7 +97,7 @@ def repeat_items(items, times=2):
     Returns:
         New list with items repeated
     """
-    items = items + items*times
+    items = items*times
     return items
 
 
